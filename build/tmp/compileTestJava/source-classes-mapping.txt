@@ -1,0 +1,25 @@
+ru/netology/tests/APITest.java
+ ru.netology.tests.APITest
+ru/netology/data/DataHelper.java
+ ru.netology.data.DataHelper
+ ru.netology.data.DataHelper$CardData
+ru/netology/data/SQLHelper.java
+ ru.netology.data.SQLHelper
+ru/netology/database/CreditRequestEntity.java
+ ru.netology.database.CreditRequestEntity
+ru/netology/tests/PayByCreditTests.java
+ ru.netology.tests.PayByCreditTests
+ru/netology/tests/PayByCardTests.java
+ ru.netology.tests.PayByCardTests
+ru/netology/database/PaymentEntity.java
+ ru.netology.database.PaymentEntity
+ru/netology/tests/BaseUITest.java
+ ru.netology.tests.BaseUITest
+ru/netology/database/OrderEntity.java
+ ru.netology.database.OrderEntity
+ru/netology/data/APIHelper.java
+ ru.netology.data.APIHelper
+ru/netology/pages/MainPage.java
+ ru.netology.pages.MainPage
+ru/netology/pages/PurchasePage.java
+ ru.netology.pages.PurchasePage

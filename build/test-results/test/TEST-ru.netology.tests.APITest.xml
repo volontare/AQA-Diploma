@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.netology.tests.APITest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-07-21T20:02:01" hostname="DESKTOP-A03TOU7" time="7.108">
+  <properties/>
+  <testcase name="shouldStatusPayWithCreditValidApprovedCardNumber()" classname="ru.netology.tests.APITest" time="6.198"/>
+  <testcase name="shouldStatusPayWithValidDeclinedCardNumber()" classname="ru.netology.tests.APITest" time="0.296"/>
+  <testcase name="shouldStatusPayWithCreditValidDeclinedCardNumber()" classname="ru.netology.tests.APITest" time="0.262"/>
+  <testcase name="shouldStatusPayWithValidApprovedCardNumber()" classname="ru.netology.tests.APITest" time="0.338"/>
+  <system-out><![CDATA[Request method:	POST
+Request URI:	http://localhost:8080/api/v1/credit
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "number": "4444 4444 4444 4441",
+    "month": "10",
+    "year": "22",
+    "holder": "Garret Conn",
+    "cvc": "557"
+}
+Request method:	POST
+Request URI:	http://localhost:8080/api/v1/pay
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "number": "4444 4444 4444 4442",
+    "month": "05",
+    "year": "22",
+    "holder": "Nickole Cronin",
+    "cvc": "806"
+}
+Request method:	POST
+Request URI:	http://localhost:8080/api/v1/credit
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "number": "4444 4444 4444 4442",
+    "month": "09",
+    "year": "22",
+    "holder": "Chi Beier",
+    "cvc": "761"
+}
+Request method:	POST
+Request URI:	http://localhost:8080/api/v1/pay
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "number": "4444 4444 4444 4441",
+    "month": "07",
+    "year": "22",
+    "holder": "Darryl Treutel",
+    "cvc": "795"
+}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
