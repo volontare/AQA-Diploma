@@ -7,24 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Locale;
-
-import static java.time.format.DateTimeFormatter.ofPattern;
 
 @NoArgsConstructor
 public class DataHelper {
 
-    public static String approvedCardNumber = "4444 4444 4444 4441";
-    public static String declinedCardNumber = "4444 4444 4444 4442";
-    public static String notExistCardNumber = "4444 4444 4444 1234";
-    public static String fakerCardNumber = new Faker(new Locale("en-US")).finance().creditCard();
+    public static String approvedNumber = "4444 4444 4444 4441";
+    public static String declinedNumber = "4444 4444 4444 4442";
+    public static String notExistNumber = "4444 4444 4444 1234";
+    public static String fakerNumber = new Faker(new Locale("en-US")).finance().creditCard();
     public static Faker fakerEN = new Faker(new Locale("en-US"));
     public static Faker fakerRU = new Faker(new Locale("ru-RU"));
-    public static Calendar calendar = new GregorianCalendar();
 
     @Data
     @AllArgsConstructor
@@ -43,95 +37,95 @@ public class DataHelper {
     }
 
     // Данные валидной карты
-    public static CardData getApprovedCardNumber() {
-        return getCardDataEn(approvedCardNumber);
+    public static CardData getApprovedNumber() {
+        return getCardDataEn(approvedNumber);
     }
 
     // Данные невалидной карты
-    public static CardData getDeclinedCardNumber() {
-        return getCardDataEn(declinedCardNumber);
+    public static CardData getDeclinedNumber() {
+        return getCardDataEn(declinedNumber);
     }
 
     // Пустое поле Номер карты
-    public static CardData getEmptyCardNumber() {
+    public static CardData getEmptyNumber() {
         return getCardDataEn("");
     }
 
     // Ввод в поле Номер карты карты с недостаточным количеством цифр (минимальное количество цифр в карте 13)
-    public static CardData getCardNumberIfFewDigits() {
-        return getCardDataEn("card" + approvedCardNumber.substring(3));
+    public static CardData getNumberIfFewDigits() {
+        return getCardDataEn("card" + approvedNumber.substring(3));
     }
 
     // Несуществующий в БД номер карты
-    public static CardData getCardNumberIfNotExistInBase() {
-        return getCardDataEn(notExistCardNumber);
+    public static CardData getNumberIfNotExistInBase() {
+        return getCardDataEn(notExistNumber);
     }
 
     // Генерация разных типов карт
-    public static CardData getCardNumberFaker() {
-        return getCardDataEn(fakerCardNumber);
+    public static CardData getNumberFaker() {
+        return getCardDataEn(fakerNumber);
     }
 
     // Пустое поле Месяц
-    public static CardData getEmptyExpireMonth() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getEmptyMonth() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setMonth("");
         return card;
     }
 
     // Ввод в поле Месяц нулевых значений
-    public static CardData getExpireMonthWithZero() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getMonthWithZero() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setMonth(("00"));
         return card;
     }
 
     // Ввод в поле Месяц значения больше 12
-    public static CardData getExpireMonthMore12() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getMonthMore12() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setMonth(Integer.toString(fakerEN.number().numberBetween(13, 99)));
         return card;
     }
 
     // Ввод в поле Месяц одной цифры
-    public static CardData getExpireMonthWithOneDigit() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getMonthWithOneDigit() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setMonth(Integer.toString(fakerEN.number().numberBetween(1, 9)));
         return card;
     }
 
     // Пустое поле Год
-    public static CardData getEmptyExpireYear() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getEmptyYear() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setYear("");
         return card;
     }
 
     // Ввод в поле Год значения намного позднее текущего года
     public static CardData getInvalidYearIfInTheFarFuture() {
-        CardData card = getCardDataEn(approvedCardNumber);
+        CardData card = getCardDataEn(approvedNumber);
         int numberYear = Calendar.getInstance().get(Calendar.YEAR) % 1000;
         card.setYear(Integer.toString(fakerEN.number().numberBetween(numberYear + 6, 99)));
         return card;
     }
 
     // Ввод в поле Год 1 цифры
-    public static CardData getExpireYearWithOneDigit() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getYearWithOneDigit() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setYear(Integer.toString(fakerEN.number().numberBetween(1, 9)));
         return card;
     }
 
     // Ввод в Поле Год нулевых значений
-    public static CardData getExpireYearWithZero() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getYearWithZero() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setYear("00");
         return card;
     }
 
     // Истек срок действия карты
     public static CardData getExpiredCard() {
-        CardData card = getCardDataEn(approvedCardNumber);
+        CardData card = getCardDataEn(approvedNumber);
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, -0);
         int numberYear = calendar.get(Calendar.YEAR) % 1000;
@@ -142,50 +136,50 @@ public class DataHelper {
     }
 
     // Пустое поле Владелец
-    public static CardData getEmptyCardHolder() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getEmptyHolder() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder("");
         return card;
     }
 
     // Ввод в поле Владелец только фамилии
-    public static CardData getCardHolderWithoutName() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getHolderWithoutName() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.name().lastName());
         return card;
     }
 
     // Ввод в поле Владелец большого количества проблелов между фамилией и именем
-    public static CardData getCardHolderWithManySpaces() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getHolderWithManySpaces() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.name().firstName() + "        " + fakerEN.name().lastName());
         return card;
     }
 
     // Ввод в поле Владелец цифр
-    public static CardData getDigitsInCardHolder() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getDigitsInHolder() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.numerify("####################"));
         return card;
     }
 
     // Направление заявки с указанием в поле Владелец фамилии и имени на кириллице
-    public static CardData getRussianCardHolder() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getRussianHolder() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerRU.name().firstName() + " " + fakerRU.name().lastName());
         return card;
     }
 
     // Направление заявки с указанием в поле Владелец большого количества букв
-    public static CardData getCardHolderWithManyLetters() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getHolderWithManyLetters() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
         return card;
     }
 
     // Ввод в поле Владелец спецсимволов
-    public static CardData getSpecialCharactersInCardHolder() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getSpecialCharactersInHolder() {
+        CardData card = getCardDataEn(approvedNumber);
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-US"), new RandomService());
         card.setHolder(fakeValuesService.regexify("[\\-\\=\\+\\<\\>\\!\\@\\#\\$\\%\\^\\{\\}]{1,10}"));
@@ -193,36 +187,36 @@ public class DataHelper {
     }
 
     // Ввод в поле Владелец фамилии через дефис
-    public static CardData getCardHolderSurnameWithDash() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getHolderSurnameWithDash() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.name().firstName() + " " + fakerEN.name().lastName() + "-" + fakerEN.name().lastName());
         return card;
     }
 
     // Ввод в поле Владелец имени через дефис
-    public static CardData getCardHolderNameWithDash() {
-        CardData card = getCardDataEn(approvedCardNumber);
+    public static CardData getHolderNameWithDash() {
+        CardData card = getCardDataEn(approvedNumber);
         card.setHolder(fakerEN.name().firstName() + "-" + fakerEN.name().firstName() + " " + fakerEN.name().lastName());
         return card;
     }
 
     // Пустое поле CVC-код
     public static CardData getEmptyCvcCode() {
-        CardData card = getCardDataEn(approvedCardNumber);
+        CardData card = getCardDataEn(approvedNumber);
         card.setCvc("");
         return card;
     }
 
     // Поле CVC-код с двумя цифрами
     public static CardData getCvcCodeWithTwoDigits() {
-        CardData card = getCardDataEn(approvedCardNumber);
+        CardData card = getCardDataEn(approvedNumber);
         card.setCvc(fakerEN.number().digits(2) + "w");
         return card;
     }
 
     // Поле CVC-код с нулевыми значениями
     public static CardData getCvcCodeWithZero() {
-        CardData card = getCardDataEn(approvedCardNumber);
+        CardData card = getCardDataEn(approvedNumber);
         card.setCvc("000");
         return card;
     }

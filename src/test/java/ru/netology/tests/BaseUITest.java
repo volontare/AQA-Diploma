@@ -13,9 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class BaseUITest {
 
     @BeforeAll
-    static void setUpAll() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
+    static void setUpAll() { SelenideLogger.addListener("allure", new AllureSelenide()); }
 
     @AfterAll
     static void tearDownAll() {

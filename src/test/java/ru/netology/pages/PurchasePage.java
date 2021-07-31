@@ -14,11 +14,11 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class PurchasePage {
 
-    private final SelenideElement cardNumberField = $("input[placeholder='0000 0000 0000 0000']");
-    private final SelenideElement expireMonthField = $("input[placeholder='08']");
-    private final SelenideElement expireYearField = $("input[placeholder='22']");
+    private final SelenideElement numberField = $("input[placeholder='0000 0000 0000 0000']");
+    private final SelenideElement monthField = $("input[placeholder='08']");
+    private final SelenideElement yearField = $("input[placeholder='22']");
     private final ElementsCollection fieldSet = $$(".input__control");
-    private final SelenideElement cardHolderField = fieldSet.get(3);
+    private final SelenideElement holderField = fieldSet.get(3);
     private final SelenideElement cvcCodeField = $("input[placeholder='999']");
 
     private final SelenideElement emptyField = $(byText("Поле обязательно для заполнения"));
@@ -30,10 +30,10 @@ public class PurchasePage {
     private final SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
 
     public void completedPurchaseForm(DataHelper.CardData cardData) {
-        cardNumberField.setValue(cardData.getNumber());
-        expireMonthField.setValue(cardData.getMonth());
-        expireYearField.setValue(cardData.getYear());
-        cardHolderField.setValue(cardData.getHolder());
+        numberField.setValue(cardData.getNumber());
+        monthField.setValue(cardData.getMonth());
+        yearField.setValue(cardData.getYear());
+        holderField.setValue(cardData.getHolder());
         cvcCodeField.setValue(cardData.getCvc());
         continueButton.click();
     }
@@ -55,10 +55,10 @@ public class PurchasePage {
     }
 
     public void successResultNotification() {
-        successResult.shouldHave(Condition.visible, Duration.ofSeconds(15));
+        successResult.shouldHave(Condition.visible, Duration.ofSeconds(20));
     }
 
     public void failureResultNotification() {
-        failureResult.shouldHave(Condition.visible, Duration.ofSeconds(15));
+        failureResult.shouldHave(Condition.visible, Duration.ofSeconds(20));
     }
 }
