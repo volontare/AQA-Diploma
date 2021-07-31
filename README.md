@@ -1,3 +1,19 @@
+# Automatization Final Project
+
+## О проекте
+В рамках данного проекта необходимо автоматизировать тестирование веб-сервиса покупки тура, взаимодействующего с СУБД и API Банка.
+
+Полные условия и исходные данные можно посмотреть [здесь](https://github.com/netology-code/qa-diploma).
+
+## Документация:
+
+[План по автоматизации тестирования](https://github.com/volontare/AQA-Diploma/blob/master/documents/Plan.md)
+
+[Отчет по итогам автоматизированного тестирования](https://github.com/volontare/AQA-Diploma/blob/master/documents/Report.md)
+
+[Отчет по итогам автоматизации](https://github.com/volontare/AQA-Diploma/blob/master/documents/Summary.md)
+
+
 ## Необходимое окружение: 
  * Docker Desktop. Скачать и ознакомиться с документацией можно [здесь](https://www.docker.com/products/docker-desktop); 
 
